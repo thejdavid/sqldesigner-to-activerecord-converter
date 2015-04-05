@@ -1,0 +1,22 @@
+<div style="margin-left:auto;margin-right:auto;width:1200px;">
+<div style="float:left">
+<h1>SQLFORMAT </h1>
+
+
+<%= form_tag(converted_index_path) do %>
+  
+  <%= text_area_tag(:sqltoconvert, " EXPORT YOUR SQLDESIGNER SCHEMA AND GENERATE SQL FORMAT THEN COPY PAST IT HERE AND CLICK CONVERT \r\n\r\n\r\n\r\n-- ---\r\n-- Globals\r\n-- ---\r\n\r\n-- SET SQL_MODE=\"NO_AUTO_VALUE_ON_ZERO\";\r\n-- SET FOREIGN_KEY_CHECKS=0;\r\n\r\n-- ---\r\n-- Table 'products'\r\n-- \r\n-- ---\r\n\r\nDROP TABLE IF EXISTS `products`;\r\n\t\t\r\nCREATE TABLE `products` (\r\n  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,\r\n  `category_id` INTEGER NULL DEFAULT NULL,\r\n  `designer_id` INTEGER NULL DEFAULT NULL,\r\n  `name` CHAR NULL DEFAULT NULL,\r\n  `description` CHAR NULL DEFAULT NULL,\r\n  `picture` CHAR NULL DEFAULT NULL,\r\n  PRIMARY KEY (`id`)\r\n);\r\n\r\n-- ---\r\n-- Table 'categories'\r\n-- \r\n-- ---\r\n\r\nDROP TABLE IF EXISTS `categories`;\r\n\t\t\r\nCREATE TABLE `categories` (\r\n  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,\r\n  `category_name` CHAR NULL DEFAULT NULL,\r\n  `description` CHAR NULL DEFAULT NULL,\r\n  `picture` CHAR NULL DEFAULT NULL,\r\n  PRIMARY KEY (`id`)\r\n);\r\n\r\n-- ---\r\n-- Table 'comments'\r\n-- \r\n-- ---\r\n\r\nDROP TABLE IF EXISTS `comments`;\r\n\t\t\r\nCREATE TABLE `comments` (\r\n  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,\r\n  `title` CHAR NULL DEFAULT NULL,\r\n  `content` CHAR NULL DEFAULT NULL,\r\n  `product_id` INTEGER NULL DEFAULT NULL,\r\n  `user_id` INTEGER NULL DEFAULT NULL,\r\n  PRIMARY KEY (`id`)\r\n);\r\n\r\n-- ---\r\n-- Table 'users'\r\n-- \r\n-- ---\r\n\r\nDROP TABLE IF EXISTS `users`;\r\n\t\t\r\nCREATE TABLE `users` (\r\n  `id` INTEGER NULL AUTO_INCREMENT DEFAULT NULL,\r\n  `email` CHAR NULL,\r\n  `firstname` CHAR NULL DEFAULT NULL,\r\n  `lastname` CHAR NULL DEFAULT NULL,\r\n  `building` CHAR NULL DEFAULT NULL,\r\n  `Adress1` CHAR NULL DEFAULT NULL,\r\n  `Adress2` CHAR NULL DEFAULT NULL,\r\n  `city` CHAR NULL DEFAULT NULL,\r\n  `state` CHAR NULL DEFAULT NULL,\r\n  `paypal_email` CHAR NULL DEFAULT NULL,\r\n  `phone` CHAR NULL DEFAULT NULL,\r\n  `billingadress` CHAR NULL DEFAULT NULL,\r\n  `billingcity` CHAR NULL DEFAULT NULL,\r\n  `billingregion` CHAR NULL DEFAULT NULL,\r\n  `billingpostcode` CHAR NULL DEFAULT NULL,\r\n  `billingcountry` CHAR NULL DEFAULT NULL,\r\n  `shippingadress` CHAR NULL DEFAULT NULL,\r\n  `shippingcity` CHAR NULL DEFAULT NULL,\r\n  `shippingregion` CHAR NULL DEFAULT NULL,\r\n  `shippingpostcode` CHAR NULL DEFAULT NULL,\r\n  `shippingcountry` CHAR NULL DEFAULT NULL,\r\n  `password` CHAR NULL DEFAULT NULL,\r\n  PRIMARY KEY (`id`)\r\n);\r\n\r\n-- ---\r\n-- Table 'orders'\r\n-- \r\n-- ---\r\n\r\nDROP TABLE IF EXISTS `orders`;\r\n\t\t\r\n", size: "90x40") %>
+
+ </br> <%= submit_tag("Convert") %>
+<% end %>
+</div>
+
+<div style="float:right">
+<h1> ACTIVERECORD FORMAT </h1>
+<% unless @chatte.nil?  %>
+<% @chatte.each do |bite| %>
+<%= bite.join(" ") %></br>
+<% end %>
+<% end %>
+</div>
+</div>
