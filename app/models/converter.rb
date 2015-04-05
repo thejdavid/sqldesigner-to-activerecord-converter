@@ -42,16 +42,14 @@ class Converter
     end
     @active_record_syntax
   end
-
-# Cleaning everything not related to table creation
+ #Cleaning everything not related to table creation
   def remove_useless
     @sqlsyntax.split("\r\n").each do |line|
       @active_record_syntax << line.split(' ') if line.start_with?('CREATE TABLE','  `',');')
     end
-    @active_record_syntax
   end
 
-  # table collumn option delete.(todo SQL option to ActiveRecord option)
+ #table collumn option delete.(todo SQL option to ActiveRecord option)
   def remove_sql_line_options
     @active_record_syntax.each do |line|
       line.delete('(')
@@ -61,7 +59,6 @@ class Converter
       line.delete('NULL,')
       line.delete('DEFAULT')
     end
-    @active_record_syntax
   end
 
   def convert_to_symbol
@@ -74,7 +71,6 @@ class Converter
           line_word
         end
       end
-    @active_record_syntax
     end
   end
 
@@ -95,8 +91,8 @@ class Converter
 
   def converting_data_type
     @active_record_syntax.each do |line|
-  # Converting datatype and repositionning the col :name.
-      line[0],line[1] = 't.' + Converter::SqlDatatypeToActiveRecordDatatype[line[1]], line[0]  if (line & ['CHAR','INTEGER','TINYINT','SMALLINT','MEDIUMINT','INT' 'BIGINT','DECIMAL','FLOAT','DOUBLE','CHAR','VARCHAR','MEDIUMTElineT','BINARY','VARBINARY','BLOB','DATE','TIME','DATETIME','YEAR','TIMESTAMP','ENUM','SET','bit']).length != 0
+ #Converting datatype and repositionning the col :name.
+      line[0],line[1] = 't.' + Converter::SqlDatatypeToActiveRecordDatatype[line[1]], line[0]  if (line & ['CHAR', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'INT' 'BIGINT', 'DECIMAL', 'FLOAT', 'DOUBLE', 'CHAR', 'VARCHAR', 'MEDIUMTElineT', 'BINARY', 'VARBINARY', 'BLOB', 'DATE', 'TIME', 'DATETIME', 'YEAR', 'TIMESTAMP', 'ENUM', 'SET', 'bit']).length != 0
       @active_record_syntax
     end
   end
@@ -108,6 +104,5 @@ class Converter
         line.push('|t|')
       end
     end
-    @active_record_syntax
   end
 end
