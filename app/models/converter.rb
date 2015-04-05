@@ -4,8 +4,8 @@ class Converter
 		@active_record_syntax = []
 	end
 
-	SqlDatatypeToActiveRecordDatatype = {
-		'INTEGER' =>  'integer',
+  SqlDatatypeToActiveRecordDatatype = {
+    'INTEGER' =>  'integer',
 		'TINYINT' =>  'integer',
 		'SMALLINT' =>  'integer',
 		'MEDIUMINT' =>  'integer',
@@ -22,7 +22,7 @@ class Converter
 		'BLOB' =>  '',
 		'DATE' =>  'date',
 		'TIME' =>  'time',
-		'DATETIME' => 'datetime' ,
+		'DATETIME' => 'datetime',
 		'YEAR' =>  '',
 		'TIMESTAMP' =>  'timestamp',
 		'ENUM' =>  'boolean',
@@ -109,5 +109,5 @@ class Converter
 			end
 		end
 		@active_record_syntax
-	end
+  end
 end
