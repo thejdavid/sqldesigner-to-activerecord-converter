@@ -7,11 +7,9 @@ class ConvertedController < ApplicationController
   end
 
   def create
-    @comments_from_form = params['sqltoconvert']
-    #do your stuff with comments_from_form here
-    @bite = Converter.new(@comments_from_form)
-    @chatte = @bite.convert_output
-    #render inline: "<% @chatte.each do |bite| %><%= bite %></br><% end %>"
+    sql = params['sqltoconvert']
+    @to_convert = Converter.new(sql)
+    @converted_file = @to_convert.convert_output
     render :index
   end
 end

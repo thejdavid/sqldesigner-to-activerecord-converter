@@ -37,7 +37,7 @@ class Converter
     create_end
     converting_data_type
     add_ruby_block
-    @active_record_syntax.each do |line|
+    @active_record_syntax.map! do |line|
       line.join(' ')
     end
     @active_record_syntax

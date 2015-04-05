@@ -13,9 +13,9 @@
 
 <div style="float:right">
 <h1> ACTIVERECORD FORMAT </h1>
-<% unless @chatte.nil?  %>
-<% @chatte.each do |bite| %>
-<%= bite.join(" ") %></br>
+<% unless @converted_file.nil?  %>
+<% @converted_file.each do |line| %>
+<%= line %></br>
 <% end %>
 <% end %>
 </div>
