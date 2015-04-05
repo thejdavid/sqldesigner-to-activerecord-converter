@@ -16,7 +16,12 @@
 <h1> ACTIVERECORD FORMAT </h1>
 <% unless @converted_file.nil?  %>
 <% @converted_file.each do |line| %>
-<%= line %></br>
+<% if line == 'end' %>
+<%= line  %></br>
+<% else %>
+<%= line %>
+<% end %>
+</br>
 <% end %>
 <% end %>
 </div>
