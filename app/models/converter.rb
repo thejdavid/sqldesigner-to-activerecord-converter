@@ -33,6 +33,7 @@ class Converter
   def convert_output
     remove_useless
     remove_sql_line_options
+    delete_primary_key
     convert_to_symbol
     create_end
     converting_data_type
@@ -50,6 +51,7 @@ class Converter
   end
 
  #table collumn option delete.(todo SQL option to ActiveRecord option)
+# utilise la method reject pour refactor ca 
   def remove_sql_line_options
     @active_record_syntax.each do |line|
       line.delete('(')
@@ -59,6 +61,12 @@ class Converter
       line.delete('NULL,')
       line.delete('DEFAULT')
     end
+    puts "_______________________"
+    p @active_record_syntax
+  end
+
+  def delete_primary_key
+  @active_record_syntax.delete_if {|x| x.include?('`id`') }
   end
 
   def convert_to_symbol
