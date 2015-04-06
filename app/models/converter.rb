@@ -61,12 +61,10 @@ class Converter
       line.delete('NULL,')
       line.delete('DEFAULT')
     end
-    puts "_______________________"
-    p @active_record_syntax
   end
 
   def delete_primary_key
-  @active_record_syntax.delete_if {|x| x.include?('`id`') }
+    @active_record_syntax.delete_if {|x| x.include?('`id`') }
   end
 
   def convert_to_symbol
