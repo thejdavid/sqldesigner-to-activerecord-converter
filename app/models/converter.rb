@@ -98,7 +98,7 @@ class Converter
   def converting_data_type
     @active_record_syntax.each do |line|
  #Converting datatype and repositionning the col :name.
-      line[0],line[1] = 't.' + Converter::SqlDatatypeToActiveRecordDatatype[line[1]], line[0]  if (line & ['CHAR', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'INT' 'BIGINT', 'DECIMAL', 'FLOAT', 'DOUBLE', 'CHAR', 'VARCHAR', 'MEDIUMTElineT', 'BINARY', 'VARBINARY', 'BLOB', 'DATE', 'TIME', 'DATETIME', 'YEAR', 'TIMESTAMP', 'ENUM', 'SET', 'bit']).length != 0
+      line[0],line[1] = 't.' + Converter::SqlDatatypeToActiveRecordDatatype[line[1]], line[0]  if (line & ['CHAR', 'INTEGER', 'TINYINT', 'SMALLINT', 'MEDIUMINT', 'INT' 'BIGINT', 'DECIMAL', 'FLOAT', 'DOUBLE', 'CHAR', 'VARCHAR', 'MEDIUMTElineT', 'BINARY', 'VARBINARY', 'BLOB', 'DATE', 'TIME', 'DATETIME', 'YEAR', 'TIMESTAMP', 'ENUM', 'SET', 'bit','MEDIUMTEXT']).length != 0
       @active_record_syntax
     end
   end
